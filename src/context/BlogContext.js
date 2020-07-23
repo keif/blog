@@ -3,11 +3,17 @@ import createDataContext from "./createDataContext"
 const blogReducer = (state, action) => {
     switch (action.type) {
         case `add_blogpost`:
-            return [...state, { id: new Date().getTime(), title: `Blog Post #${state.length + 1}` }]
+            return [
+                ...state,
+                {
+                    id: new Date().getTime(),
+                    title: `Blog Post #${state.length + 1}`
+                }
+            ]
         case `edit_blogpost`:
             return state
         case `delete_blogpost`:
-            return state
+            return state.filter((blogPost) => blogPost.id !== action.payload)
         default:
             return state
 
@@ -22,4 +28,14 @@ const addBlogPost = (dispatch) => {
     }
 }
 
-export const { Context, Provider } = createDataContext(blogReducer, { addBlogPost }, [])
+const deleteBlogPost = (dispatch) => {
+    return (id) => {
+        console.log(id)
+        dispatch({
+            payload: id,
+            type: `delete_blogpost`
+        })
+    }
+}
+
+export const { Context, Provider } = createDataContext(blogReducer, { addBlogPost, deleteBlogPost }, [])
