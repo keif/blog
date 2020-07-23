@@ -7,7 +7,6 @@ const ShowScreen = (props) => {
     const { navigation } = props
     const blogPost = state.find((post) => post.id === navigation.getParam(`id`))
 
-    console.log(blogPost)
     return (
         <View>
             <Text>{blogPost.title}</Text>
