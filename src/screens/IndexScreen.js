@@ -1,3 +1,4 @@
+import { Feather } from "@expo/vector-icons"
 import React, { useContext } from "react"
 import { Button, FlatList, StyleSheet, Text, View } from "react-native"
 import { Context } from "../context/BlogContext"
@@ -7,7 +8,6 @@ const IndexScreen = () => {
 
     return (
         <View>
-            <Text>Index Screen</Text>
             <Button
                 onPress={addBlogPost}
                 title={`Add Blog Post`}
@@ -16,13 +16,33 @@ const IndexScreen = () => {
                 data={state}
                 keyExtractor={(blogPost) => blogPost.id}
                 renderItem={({ item }) => {
-                    return <Text>{item.title}</Text>
+                    return (
+                        <View style={styles.row}>
+                            <Text style={styles.title}>{item.title}</Text>
+                            <Feather name="trash"/>
+                        </View>
+                    )
                 }}
             />
         </View>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    row: {
+        borderTopWidth: 1,
+        borderColor: `gray`,
+        flexDirection: `row`,
+        justifyContent: `space-between`,
+        paddingHorizontal: 10,
+        paddingVertical: 20,
+    },
+    title: {
+        fontSize: 18,
+    },
+    icon: {
+        fontSize: 24,
+    }
+})
 
 export default IndexScreen
