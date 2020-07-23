@@ -1,5 +1,6 @@
+import { EvilIcons } from "@expo/vector-icons"
 import React, { useContext } from "react"
-import { StyleSheet, Text, View } from "react-native"
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { Context } from "../context/BlogContext"
 
 const ShowScreen = (props) => {
@@ -15,6 +16,15 @@ const ShowScreen = (props) => {
     )
 }
 
+ShowScreen.navigationOptions = ({ navigation }) => {
+    return {
+        headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate(`Edit`)}>
+                <EvilIcons name="pencil" size={35}/>
+            </TouchableOpacity>
+        ),
+    }
+}
 const styles = StyleSheet.create({})
 
 export default ShowScreen
