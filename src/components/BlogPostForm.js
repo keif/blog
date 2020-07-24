@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import { Button, StyleSheet, Text, TextInput, View } from "react-native"
 
-const BlogPostForm = (props) => {
-    const { onSubmit } = props
-    const [title, setTitle] = useState(``)
-    const [content, setContent] = useState(``)
+const BlogPostForm = ({ initialValues, onSubmit }) => {
+    const [title, setTitle] = useState(initialValues.title)
+    const [content, setContent] = useState(initialValues.content)
 
     return (
         <View style={styles.container}>
@@ -29,6 +28,7 @@ const BlogPostForm = (props) => {
         </View>
     )
 }
+
 
 const styles = StyleSheet.create({
     container: {
