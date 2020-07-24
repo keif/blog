@@ -1,5 +1,11 @@
 import createDataContext from "./createDataContext"
 
+const defaultBlogPost = [{
+    content: `Test content.`,
+    id: new Date().getTime(),
+    title: `Test Title`,
+}]
+
 const blogReducer = (state, action) => {
     switch (action.type) {
         case `add_blogpost`:
@@ -41,4 +47,4 @@ const deleteBlogPost = (dispatch) => {
     }
 }
 
-export const { Context, Provider } = createDataContext(blogReducer, { addBlogPost, deleteBlogPost }, [])
+export const { Context, Provider } = createDataContext(blogReducer, { addBlogPost, deleteBlogPost }, defaultBlogPost)
