@@ -33,7 +33,9 @@ const addBlogPost = (dispatch) => {
             payload: { title, content },
             type: `add_blogpost`,
         })
-        callback()
+        if (callback) {
+            callback()
+        }
     }
 }
 
@@ -52,7 +54,9 @@ const editBlogPost = (dispatch) => {
             payload: { content, id, title, },
             type: `edit_blogpost`,
         })
-        callback()
+        if (callback) {
+            callback()
+        }
     }
 }
 
