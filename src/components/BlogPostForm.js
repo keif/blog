@@ -1,11 +1,10 @@
-import React, { useContext, useState } from "react"
+import React, { useState } from "react"
 import { Button, StyleSheet, Text, TextInput, View } from "react-native"
-import { Context } from "../context/BlogContext"
 
-const BlogPostForm = ({ navigation }) => {
+const BlogPostForm = (props) => {
+    const { onSubmit } = props
     const [title, setTitle] = useState(``)
     const [content, setContent] = useState(``)
-    const { addBlogPost } = useContext(Context)
 
     return (
         <View style={styles.container}>
@@ -24,9 +23,7 @@ const BlogPostForm = ({ navigation }) => {
                 style={styles.input}
             />
             <Button
-                // onPress={() => addBlogPost(title, content, () => {
-                //     navigation.navigate(`Index`)
-                // })}
+                onPress={() => onSubmit(title, content)}
                 title={`Save Blog Post`}
             />
         </View>
