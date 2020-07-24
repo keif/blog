@@ -5,6 +5,7 @@ const BlogPostForm = ({ initialValues, onSubmit }) => {
     const [title, setTitle] = useState(initialValues.title)
     const [content, setContent] = useState(initialValues.content)
 
+    console.log(title, content)
     return (
         <View style={styles.container}>
             <Text
@@ -13,6 +14,7 @@ const BlogPostForm = ({ initialValues, onSubmit }) => {
             <TextInput
                 onChangeText={setTitle}
                 style={styles.input}
+                value={title}
             />
             <Text
                 style={styles.label}
@@ -20,6 +22,7 @@ const BlogPostForm = ({ initialValues, onSubmit }) => {
             <TextInput
                 onChangeText={setContent}
                 style={styles.input}
+                value={content}
             />
             <Button
                 onPress={() => onSubmit(title, content)}
@@ -29,6 +32,12 @@ const BlogPostForm = ({ initialValues, onSubmit }) => {
     )
 }
 
+BlogPostForm.defaultProps = {
+    initialValues: {
+        content: ``,
+        title: ``,
+    },
+}
 
 const styles = StyleSheet.create({
     container: {
